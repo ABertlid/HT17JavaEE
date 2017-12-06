@@ -5,16 +5,17 @@ import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 
 @ManagedBean
-public class Serie implements Serializable{
+public class Serie implements Serializable {
 
 	private static final long serialVersionUID = -3141667461142743881L;
+	
 	private int id;
 	private String title;
-	
+
 	public Serie() {
-		
+
 	}
-	
+
 	public Serie(int id, String title) {
 
 		this.id = id;
@@ -22,12 +23,12 @@ public class Serie implements Serializable{
 	}
 
 	public int getId() {
-		System.out.println("i Serie-bönan och hämtar id: " +id);
+
 		return id;
 	}
-	
+
 	public String getTitle() {
-		System.out.println("i Serie-bönan och hämtar titel: " +title);
+
 		return title;
 	}
 
@@ -43,6 +44,5 @@ public class Serie implements Serializable{
 	public String toString() {
 		return "Serie [id=" + id + ", title=" + title + "]";
 	}
-	
 
 }
