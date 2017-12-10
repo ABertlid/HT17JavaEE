@@ -8,7 +8,7 @@
 <h:head>
 
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Add Serie</title>
+	<title>Register new user</title>
 	
 		<h:outputStylesheet library="css" name="style.css"  />
 		<h:outputStylesheet library="css" name="add-serie-style.css"  />
@@ -24,25 +24,25 @@
 		</div>
 		
 		<div id="container">
-			<h3>Add Serie</h3>
+			<h3>Register new user</h3>
 			
 			<h:messages globalOnly="true"/>
 			
 			<h:form id="form" style="margin-top: 10px;">
 				<h:panelGrid columns="2">
-				
-					<p:focus for="title"/>
-						<p:inputText value="#{serie.title}" id="title"/> <h:message for="title" />
-						<p:commandButton value="Save" 
-										styleClass="save" 
-										action="#{serieController.addSerie(serie)}" />
+									
+						<p:inputText value="#{user.username}" id="username" placeholder="username"/> <h:message for="username" />
+						<p:password value="#{user.password}" id="password" placeholder="password"/> <h:message for="password" />
+										
+						<p:commandButton value="Save"
+										styleClass="save"
+										action="#{loginController.registerNewUser(user)}"/>
 				</h:panelGrid>
 			
 			</h:form>
-		<div style="clear: both;"></div>
-		<p><h:outputLink value="database.xhtml">Back to List</h:outputLink></p>
+					<div style="clear: both;"></div>
+		<p><h:outputLink value="login.xhtml">Back to Login</h:outputLink></p>
 		</div>
-
 </h:body>
 
 </html>

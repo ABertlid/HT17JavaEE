@@ -68,7 +68,7 @@ public class SerieController implements Serializable {
 
 			return null;
 		}
-		return "database?faces-redirect=true";
+		return "library?faces-redirect=true";
 	}
 
 	public String loadSerie(int serieId) {
@@ -89,7 +89,7 @@ public class SerieController implements Serializable {
 			return null;
 		}
 
-		return "update-serie-form";
+		return "update-serie";
 	}
 
 	public String updateSerie(Serie theSerie) {
@@ -104,7 +104,7 @@ public class SerieController implements Serializable {
 
 			return null;
 		}
-		return "database?faces-redirect=true";
+		return "library?faces-redirect=true";
 	}
 
 	public String deleteSerie(int serieId) {
@@ -120,7 +120,7 @@ public class SerieController implements Serializable {
 			return null;
 		}
 
-		return "database";
+		return "library";
 	}
 
 	public String getSearchSerie() {

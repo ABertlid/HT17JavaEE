@@ -6,7 +6,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 @ManagedBean
-@SessionScoped
 public class User implements Serializable {
 
 	private static final long serialVersionUID = 7342006815638959745L;

@@ -29,7 +29,8 @@
 				<h:panelGrid columns="1" cellpadding="5">
 				
 					<h:inputHidden value="#{user.id}"></h:inputHidden>
-				
+					
+					<p:focus for="username"/>
 					<h:outputLabel for="username" value="Username: "/>
 						<p:inputText id="username" 
 									value="#{user.username}" 
@@ -43,7 +44,7 @@
 					<p:commandButton value="Login" 
 									action="#{loginController.validateUser(user.username, user.password)}"/>
 									
-					<p:button value="New User" styleClass="add-serie-button" outcome="add-user-form"/>
+					<p:button value="New User" styleClass="add-serie-button" outcome="add-user"/>
 					
 				</h:panelGrid>
 			
