@@ -8,7 +8,7 @@ import javax.faces.bean.ManagedBean;
 public class Serie implements Serializable {
 
 	private static final long serialVersionUID = -3141667461142743881L;
-	
+
 	private int id;
 	private String title;
 

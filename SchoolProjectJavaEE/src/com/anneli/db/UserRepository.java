@@ -7,20 +7,20 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.anneli.user.User;
+import com.anneli.bean.User;
 
-public class Login extends DatabaseConnection {
+public class UserRepository extends DatabaseConnection {
 
 	private static final String USER_PW_CHECK = "SELECT * FROM login WHERE username=? AND password=?";
 	private static final String REG_NEW_USER = "INSERT INTO login (username, password) VALUES (?,?) ";
 
-	public Login() throws Exception {
+	public UserRepository() throws Exception {
 		DatabaseConnection.getInitialize();
 	}
 
 	public boolean checkLogin(String username, String password) throws Exception {
 		String hashedPassword = getHashedPassword(password);
-		
+
 		Connection connection = null;
 		PreparedStatement pStatement = null;
 		ResultSet resultSet = null;
@@ -55,7 +55,7 @@ public class Login extends DatabaseConnection {
 
 	public void addNewUser(User theUser) throws SQLException {
 		String hashedPassword = setHashedPassword(theUser);
-		
+
 		Connection connection = null;
 		PreparedStatement pStatement = null;
 
@@ -71,47 +71,45 @@ public class Login extends DatabaseConnection {
 		} finally {
 			closeConnPstat(connection, pStatement);
 		}
-		
+
 	}
 
 	private String setHashedPassword(User theUser) {
 		String passwordToHash = theUser.getPassword();
 		String hashedPassword = null;
-		
+
 		try {
 			MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
 			messageDigest.update(passwordToHash.getBytes());
 			byte[] bytes = messageDigest.digest();
-			
+
 			StringBuilder sBuilder = new StringBuilder();
-			for(int i = 0; i < bytes.length; i++) {
-				sBuilder.append(Integer.toString((bytes[i] & 0xff)
-						+ 0x100,16).substring(1));
-				
+			for (int i = 0; i < bytes.length; i++) {
+				sBuilder.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+
 				hashedPassword = sBuilder.toString();
-						
+
 			}
 		} catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();
 		}
 		return hashedPassword;
-	}	
-	
+	}
+
 	private String getHashedPassword(String password) {
 		String hashToPassword = password;
-		
+
 		try {
 			MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
 			messageDigest.update(hashToPassword.getBytes());
 			byte[] bytes = messageDigest.digest();
-			
+
 			StringBuilder sBuilder = new StringBuilder();
-			for(int i = 0; i < bytes.length; i++) {
-				sBuilder.append(Integer.toString((bytes[i] & 0xff)
-						+ 0x100,16).substring(1));
-				
+			for (int i = 0; i < bytes.length; i++) {
+				sBuilder.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+
 				hashToPassword = sBuilder.toString();
-						
+
 			}
 		} catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();

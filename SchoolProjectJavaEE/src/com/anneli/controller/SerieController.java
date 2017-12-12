@@ -12,7 +12,7 @@ import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
 import com.anneli.bean.Serie;
-import com.anneli.db.Queries;
+import com.anneli.db.SerieRepository;
 
 @ManagedBean
 @SessionScoped
@@ -21,7 +21,7 @@ public class SerieController implements Serializable {
 	private static final long serialVersionUID = 8367650965755888828L;
 
 	private List<Serie> series;
-	private Queries queries;
+	private SerieRepository serieRepository;
 	private String searchSerie;
 
 	public SerieController() throws Exception {
@@ -38,14 +38,14 @@ public class SerieController implements Serializable {
 
 		try {
 			if (searchSerie != null && searchSerie.trim().length() > 0) {
-				queries = new Queries();
-				series = queries.searchSeries(searchSerie);
+				serieRepository = new SerieRepository();
+				series = serieRepository.searchSeries(searchSerie);
 
 			} else {
-				
-				queries = new Queries();
-				series = queries.getSeries();
-				
+
+				serieRepository = new SerieRepository();
+				series = serieRepository.getSeries();
+
 			}
 
 		} catch (Exception ex) {
@@ -61,7 +61,7 @@ public class SerieController implements Serializable {
 	public String addSerie(Serie theSerie) {
 
 		try {
-			queries.addSerie(theSerie);
+			serieRepository.addSerie(theSerie);
 		} catch (Exception ex) {
 
 			addErrorMessage(ex);
@@ -75,7 +75,7 @@ public class SerieController implements Serializable {
 
 		try {
 
-			Serie theSerieBean = queries.getSerie(serieId);
+			Serie theSerieBean = serieRepository.getSerie(serieId);
 
 			ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
 
@@ -96,7 +96,7 @@ public class SerieController implements Serializable {
 
 		try {
 
-			queries.updateSerie(theSerie);
+			serieRepository.updateSerie(theSerie);
 
 		} catch (Exception ex) {
 
@@ -111,7 +111,7 @@ public class SerieController implements Serializable {
 
 		try {
 
-			queries.deleteSerie(serieId);
+			serieRepository.deleteSerie(serieId);
 
 		} catch (Exception ex) {
 

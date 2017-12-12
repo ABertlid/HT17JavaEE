@@ -1,4 +1,4 @@
-package com.anneli.user;
+package com.anneli.bean;
 
 import java.io.Serializable;
 

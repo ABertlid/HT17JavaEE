@@ -10,23 +10,21 @@ import java.util.List;
 
 import com.anneli.bean.Serie;
 
-public class Queries extends DatabaseConnection {
-	
+public class SerieRepository extends DatabaseConnection {
+
 	private static final String GET_ALL_SERIES = "SELECT * FROM serie ORDER BY title";
 	private static final String ADD_SERIE = "INSERT INTO serie (title) VALUES (?)";
 	private static final String GET_SERIE_FROM_ID = "SELECT * FROM serie WHERE serie_id=?";
 	private static final String UPDATE_ONE_SERIE = "UPDATE serie SET title=? WHERE serie_id=?";
 	private static final String DELETE_ONE_SERIE = "DELETE FROM serie WHERE serie_id=?";
 	private static final String SEARCH_FOR_SERIES = "SELECT * FROM serie WHERE LOWER (title) LIKE ?";
-	
 
-	public Queries() throws Exception {
-		DatabaseConnection.getInitialize();	
+	public SerieRepository() throws Exception {
+		DatabaseConnection.getInitialize();
 	}
 
 	public List<Serie> getSeries() throws Exception {
-		
-		
+
 		List<Serie> series = new ArrayList<>();
 
 		Connection connection = null;
@@ -53,7 +51,7 @@ public class Queries extends DatabaseConnection {
 			closeConnStatRset(connection, statement, resultSet);
 		}
 	}
-	
+
 	public void addSerie(Serie theSerie) throws Exception {
 
 		Connection connection = null;
@@ -193,7 +191,7 @@ public class Queries extends DatabaseConnection {
 		}
 
 	}
-	
+
 	private void closeConnPstatRset(Connection connection, PreparedStatement pStatement, ResultSet resultSet)
 			throws SQLException {
 		closeConnPstat(connection, pStatement);
