@@ -14,13 +14,13 @@ import com.anneli.db.UserRepository;
 
 @ManagedBean
 @SessionScoped
-public class LoginController implements Serializable {
+public class UserController implements Serializable {
 
 	private UserRepository userRepository;
 
 	private static final long serialVersionUID = 7407965200910596687L;
 
-	public LoginController() {
+	public UserController() {
 
 	}
 
