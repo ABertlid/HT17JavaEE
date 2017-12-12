@@ -13,9 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.anneli.controller.LoginController;
-import com.anneli.user.User;
-
 
 @WebFilter(filterName ="Filter", urlPatterns= {"/library.xhtml","/add-serie.xhtml","/update-serie.xhtml"})
 public class LoginFilter implements Filter{

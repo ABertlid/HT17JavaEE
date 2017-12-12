@@ -3,7 +3,6 @@ package com.anneli.user;
 import java.io.Serializable;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 
 @ManagedBean
 public class User implements Serializable {
