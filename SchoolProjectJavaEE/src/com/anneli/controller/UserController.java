@@ -51,6 +51,7 @@ public class UserController implements Serializable {
 
 				return "library?faces-redirect=true";
 			}
+			//TODO message failed login
 
 		} catch (Exception ex) {
 			ex.printStackTrace();
