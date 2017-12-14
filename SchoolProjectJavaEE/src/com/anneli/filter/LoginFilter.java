@@ -13,13 +13,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+/**
+ * 
+ * @author Anneli
+ * @version 1.0
+ * @since 2017-12-13
+ */
 @WebFilter(filterName = "Filter", urlPatterns = { "/library.xhtml", "/add-serie.xhtml", "/update-serie.xhtml" })
 public class LoginFilter implements Filter {
 
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain filterChain)
 			throws IOException, ServletException {
-		System.out.println("i filter dofilter");
 
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse resp = (HttpServletResponse) response;
@@ -27,10 +32,9 @@ public class LoginFilter implements Filter {
 		Object loggedIn = session.getAttribute("user");
 		if (session != null && loggedIn != null) {
 
-			System.out.println("godkänd och inloggad " + loggedIn);
 			filterChain.doFilter(request, response);
 		} else {
-			System.out.println("ej inloggad " + loggedIn);
+
 			resp.sendRedirect("index.xhtml");
 		}
 

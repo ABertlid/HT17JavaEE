@@ -12,6 +12,14 @@ import javax.faces.context.FacesContext;
 import com.anneli.bean.User;
 import com.anneli.db.UserRepository;
 
+/**
+ * Controller class for users, uses for evaluation and send data between the
+ * view and the model
+ * 
+ * @author Anneli
+ * @version 1.0
+ * @since 2017-12-13
+ */
 @ManagedBean
 @SessionScoped
 public class UserController implements Serializable {
@@ -24,6 +32,16 @@ public class UserController implements Serializable {
 
 	}
 
+	/**
+	 * Method that checks the username and password sent by user and redirect to
+	 * correct url
+	 * 
+	 * @param username
+	 *            The username
+	 * @param password
+	 *            The password
+	 * @return url depending on successful log in
+	 */
 	public String validateUser(String username, String password) {
 
 		try {
@@ -44,6 +62,14 @@ public class UserController implements Serializable {
 
 	}
 
+	/**
+	 * Method that checks the username and save object in a HashMap. Keeps track if
+	 * user is logged in
+	 * 
+	 * @param user
+	 *            The username
+	 * @return true if user and session is valid otherwise false
+	 */
 	public boolean isLoggedIn(String user) {
 		if (user != null) {
 
@@ -51,20 +77,31 @@ public class UserController implements Serializable {
 			Map<String, Object> sessionMap = externalContext.getSessionMap();
 			sessionMap.put("user", user);
 
-			System.out.println("isloggedin: " + user + " ligger i mappen: " + sessionMap.toString());
 			return true;
 		} else {
 			return false;
 		}
 	}
 
+	/**
+	 * Method that log out user and close current session
+	 * 
+	 * @return index url
+	 */
 	public String logout() {
-		System.out.println("loggar ut användare: ");
+
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 
 		return "index?faces-redirect=true";
 	}
 
+	/**
+	 * Method that checks the incoming username and password
+	 * 
+	 * @param theUser
+	 *            The user
+	 * @return index url
+	 */
 	public String registerNewUser(User theUser) {
 
 		try {

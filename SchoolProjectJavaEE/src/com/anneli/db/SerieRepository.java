@@ -10,6 +10,13 @@ import java.util.List;
 
 import com.anneli.bean.Serie;
 
+/**
+ * Serie Repository class that handles queries to the database
+ * 
+ * @author Anneli
+ * @version 1.0
+ * @since 2017-12-13
+ */
 public class SerieRepository extends DatabaseConnection {
 
 	private static final String GET_ALL_SERIES = "SELECT * FROM serie ORDER BY title";
@@ -19,10 +26,21 @@ public class SerieRepository extends DatabaseConnection {
 	private static final String DELETE_ONE_SERIE = "DELETE FROM serie WHERE serie_id=?";
 	private static final String SEARCH_FOR_SERIES = "SELECT * FROM serie WHERE LOWER (title) LIKE ?";
 
+	/**
+	 * Constructor that initialize a single connection to database
+	 * 
+	 * @throws Exception
+	 */
 	public SerieRepository() throws Exception {
 		DatabaseConnection.getInitialize();
 	}
 
+	/**
+	 * Method that creates query and gets all the series
+	 * 
+	 * @return List of series
+	 * @throws Exception
+	 */
 	public List<Serie> getSeries() throws Exception {
 
 		List<Serie> series = new ArrayList<>();
@@ -52,6 +70,13 @@ public class SerieRepository extends DatabaseConnection {
 		}
 	}
 
+	/**
+	 * Method that creates query and adds a new serie to the database
+	 * 
+	 * @param theSerie
+	 *            The Serie
+	 * @throws Exception
+	 */
 	public void addSerie(Serie theSerie) throws Exception {
 
 		Connection connection = null;
@@ -71,6 +96,14 @@ public class SerieRepository extends DatabaseConnection {
 
 	}
 
+	/**
+	 * Method that creates query and gets one serie based on Serie ID
+	 * 
+	 * @param serieId
+	 *            The Serie ID
+	 * @return object of Serie
+	 * @throws Exception
+	 */
 	public Serie getSerie(int serieId) throws Exception {
 
 		Connection connection = null;
@@ -105,6 +138,13 @@ public class SerieRepository extends DatabaseConnection {
 
 	}
 
+	/**
+	 * Method that creates query and update a serie based on user input
+	 * 
+	 * @param theSerie
+	 *            The Serie
+	 * @throws Exception
+	 */
 	public void updateSerie(Serie theSerie) throws Exception {
 
 		Connection connection = null;
@@ -125,6 +165,13 @@ public class SerieRepository extends DatabaseConnection {
 
 	}
 
+	/**
+	 * Method that creates query and delete a serie based on Serie ID
+	 * 
+	 * @param serieId
+	 *            The Serie ID
+	 * @throws Exception
+	 */
 	public void deleteSerie(int serieId) throws Exception {
 
 		Connection connection = null;
@@ -147,6 +194,13 @@ public class SerieRepository extends DatabaseConnection {
 
 	}
 
+	/**
+	 * Method that creates query to search for specific serie/series based on user input
+	 * 
+	 * @param searchSerie
+	 * @return List with series
+	 * @throws Exception
+	 */
 	public List<Serie> searchSeries(String searchSerie) throws Exception {
 
 		List<Serie> series = new ArrayList<>();

@@ -25,23 +25,27 @@
 		<div id="content">
 			
 			<h:form>
-			
-				<h:panelGrid columns="1" cellpadding="5">
 				
-					<h:inputHidden value="#{user.id}"></h:inputHidden>
-					
+				<p:messages id="messages" autoUpdate="true" closable="true" />
+				
+				<h:inputHidden value="#{user.id}"></h:inputHidden>
+				
+				<h:panelGrid columns="3" cellpadding="5">
+				
 					<p:focus for="username"/>
-					<h:outputLabel for="username" value="Username: "/>
+					<p:outputLabel for="username" value="Username:"/>
 						<p:inputText id="username" 
 									value="#{user.username}" 
 									required="true"/>
+						<p:message for="username" style="color: red"/>
 						
-					<h:outputLabel for="password" value="Password: "/>
+					<p:outputLabel for="password" value="Password:"/>
 						<p:password id="password" 
 									value="#{user.password}"
 									required="true"/>
+						<p:message for="password" style="color: red"/>							
 						
-					<p:commandButton value="Login" 
+					<p:commandButton value="Login" 						
 									action="#{userController.validateUser(user.username, user.password)}"/>
 									
 					<p:button value="New User" styleClass="add-serie-button" outcome="add-user"/>

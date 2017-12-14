@@ -4,6 +4,13 @@ import java.io.Serializable;
 
 import javax.faces.bean.ManagedBean;
 
+/**
+ * POJO represents table Serie from database
+ * 
+ * @author Anneli
+ * @version 1.0
+ * @since 2017-12-13
+ */
 @ManagedBean
 public class Serie implements Serializable {
 

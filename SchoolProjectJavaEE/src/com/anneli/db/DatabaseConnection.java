@@ -5,6 +5,14 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+/**
+ * Singleton class that creates one instance of database connection
+ * 
+ * @author Anneli
+ * @version 1.0
+ * @since 2017-12-13
+ *
+ */
 public class DatabaseConnection {
 
 	private static DatabaseConnection initialize;
