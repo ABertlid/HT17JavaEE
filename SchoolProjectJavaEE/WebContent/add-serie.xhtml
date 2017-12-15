@@ -18,7 +18,7 @@
 
 	<div id="wrapper">
 		<div id="header">
-			<h2>Serie Library</h2>
+			<h1>Serie Library</h1>
 		</div>
 	</div>
 
@@ -28,11 +28,12 @@
 		<h:messages globalOnly="true" />
 
 		<h:form id="form" style="margin-top: 10px;">
-			<h:panelGrid columns="2">
+			<h:panelGrid columns="1">
 
 				<p:focus for="title" />
 				<p:inputText value="#{serie.title}" id="title" />
 				<h:message for="title" />
+
 				<p:commandButton value="Save" styleClass="save"
 					action="#{serieController.addSerie(serie)}" />
 			</h:panelGrid>
