@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
+ * Filter class that handles valid login and user session
  * 
  * @author Anneli
  * @version 1.0
@@ -30,9 +31,11 @@ public class LoginFilter implements Filter {
 		HttpServletResponse resp = (HttpServletResponse) response;
 		HttpSession session = req.getSession(false);
 		Object loggedIn = session.getAttribute("user");
+
 		if (session != null && loggedIn != null) {
 
 			filterChain.doFilter(request, response);
+
 		} else {
 
 			resp.sendRedirect("index.xhtml");
