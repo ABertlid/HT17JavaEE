@@ -160,6 +160,8 @@ public class UserRepository extends DatabaseConnection {
 		}
 		return hashToPassword;
 	}
+	
+	// TODO add method for salt
 
 	private void closeConnPstatRset(Connection connection, PreparedStatement pStatement, ResultSet resultSet)
 			throws SQLException {
