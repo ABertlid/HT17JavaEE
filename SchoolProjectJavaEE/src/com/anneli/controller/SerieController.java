@@ -15,8 +15,8 @@ import com.anneli.bean.Serie;
 import com.anneli.db.SerieRepository;
 
 /**
- * Controller class for series, uses for evaluation and send data between the view and the
- * model
+ * Controller class for series, uses for evaluation and send data between the
+ * view and the model
  * 
  * @author Anneli
  * @version 1.0
@@ -49,21 +49,19 @@ public class SerieController implements Serializable {
 	}
 
 	/**
-	 * Method to handle the search input from user
+	 * Method to handle the search input from user. Clears the list of series. If
+	 * text field contains a string and length is minimum 1 character create
+	 * repository object and call method
 	 */
 	public void loadSeries() {
 
-		// clears the list of series
 		series.clear();
 
-		// text field contains a string and length is minimum 1 character
-		// create repository object and call the method searchSerie()
 		try {
 			if (searchSerie != null && searchSerie.trim().length() > 0) {
 				serieRepository = new SerieRepository();
 				series = serieRepository.searchSeries(searchSerie);
 
-				// create repository object and call the method getSeries()
 			} else {
 
 				serieRepository = new SerieRepository();

@@ -61,7 +61,7 @@ public class UserRepository extends DatabaseConnection {
 			if (resultSet.next()) {
 
 				return true;
-			} 
+			}
 
 		} catch (Exception e) {
 
@@ -104,26 +104,38 @@ public class UserRepository extends DatabaseConnection {
 
 	}
 
+	/**
+	 * Method that creates a hashed password from user. Gets an instance of class
+	 * and chosen algorithm SHA-256. Processing the data in update() Digest,
+	 * calculate and define the password from user input.
+	 * 
+	 * In detail:
+	 * 
+	 * 0xff = 1 byte, 0-255, no negative values
+	 * 
+	 * 0x100 = adds and guarantee 3 digits value
+	 * 
+	 * 16 = hexadecimal system
+	 * 
+	 * substring(1) = removes the digit 1 in 0x100
+	 * 
+	 * sBuilder.append(Integer.toString((bytes[i] & 0xff) + 0x100,
+	 * 16).substring(1));
+	 * 
+	 * @param theUser The User
+	 * @return the hashed password
+	 */
 	private String setHashedPassword(User theUser) {
 		String passwordToHash = theUser.getPassword();
 		String hashedPassword = null;
 
 		try {
-			// creates an instance of class and chosen algorithm SHA-256
+
 			MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
 
-			// processing the data
 			messageDigest.update(passwordToHash.getBytes());
 
-			// digest, calculate and define the password from user input
 			byte[] bytes = messageDigest.digest();
-
-			// 0xff = 1 byte, 0-255, no negative values
-			// 0x100 = adds and guarantee 3 digits value
-			// 16 = hexadecimal system
-			// substring(1) = removes the digit 1 in 0x100
-			// sBuilder.append(Integer.toString((bytes[i] & 0xff) + 0x100,
-			// 16).substring(1));
 
 			hashedPassword = ByteUtils.toHexString(bytes);
 
