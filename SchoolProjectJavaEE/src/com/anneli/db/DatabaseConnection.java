@@ -17,7 +17,7 @@ public class DatabaseConnection {
 
 	private static DatabaseConnection initialize;
 	protected DataSource dataSource;
-	private String jndiName = "java:comp/env/jdbc/hibernate_serie";
+	private String jndiName = "java:comp/env/jdbc/jsf_serie";
 
 	protected DatabaseConnection() throws Exception {
 		dataSource = getDataSource();
