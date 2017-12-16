@@ -39,4 +39,4 @@ Run the application and go on http://localhost:8080/
 
 /SchoolProjectJavaEE/add-serie: Add a new serie to the library
 
-[SQL file](SchoolProjectJavaEE/WebContent/resources/sql/hibernate_serie.sql)
+[SQL file](SchoolProjectJavaEE/WebContent/resources/sql/jsf_serie.sql)
