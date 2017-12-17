@@ -28,15 +28,21 @@
 		<h:messages globalOnly="true" />
 
 		<h:form id="form" style="margin-top: 10px;">
-			<h:panelGrid columns="2">
+
+			<p:messages id="messages" autoUpdate="true" closable="true" />
+
+			<h:panelGrid columns="1" cellpadding="2">
 
 				<p:focus for="username" />
 				<p:inputText value="#{user.username}" id="username"
-					placeholder="username" />
-				<h:message for="username" />
+					placeholder="username" required="true" />
+				<h:message for="username" style="color:red" />
+
+				<br />
+
 				<p:password value="#{user.password}" id="password"
-					placeholder="password" />
-				<h:message for="password" />
+					placeholder="password" required="true" />
+				<h:message for="password" style="color:red" />
 
 				<p:commandButton value="Save" styleClass="save"
 					action="#{userController.registerNewUser(user)}" />
