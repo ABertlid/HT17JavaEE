@@ -33,6 +33,9 @@ public class UserController implements Serializable {
 	}
 
 	/**
+	 * Source code based on:
+	 * https://www.journaldev.com/3851/primefaces-message-messages-growl-components-example
+	 * 
 	 * Method that checks the username and password sent by user and redirect to
 	 * correct url
 	 * 
