@@ -105,6 +105,9 @@ public class UserRepository extends DatabaseConnection {
 	}
 
 	/**
+	 * Source code based on:
+	 * https://stackoverflow.com/questions/25838473/what-does-0xff-do-and-md5-structure
+	 * 
 	 * Method that creates a hashed password from user. Gets an instance of class
 	 * and chosen algorithm SHA-256. Processing the data in update() Digest,
 	 * calculate and define the password from user input.
@@ -122,7 +125,8 @@ public class UserRepository extends DatabaseConnection {
 	 * sBuilder.append(Integer.toString((bytes[i] & 0xff) + 0x100,
 	 * 16).substring(1));
 	 * 
-	 * @param theUser The User
+	 * @param theUser
+	 *            The User
 	 * @return the hashed password
 	 */
 	private String setHashedPassword(User theUser) {
@@ -160,7 +164,7 @@ public class UserRepository extends DatabaseConnection {
 		}
 		return hashToPassword;
 	}
-	
+
 	// TODO add method for salt
 
 	private void closeConnPstatRset(Connection connection, PreparedStatement pStatement, ResultSet resultSet)

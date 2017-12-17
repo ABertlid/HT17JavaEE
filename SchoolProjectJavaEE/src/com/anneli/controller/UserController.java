@@ -41,26 +41,23 @@ public class UserController implements Serializable {
 	 * @param password
 	 *            The password
 	 * @return url depending on successful log in
+	 * @throws Exception
 	 */
-	public String validateUser(String username, String password) {
+	public String validateUser(String username, String password) throws Exception {
 
-		try {
-			boolean valid = new UserRepository().checkLogin(username, password);
+		boolean valid = new UserRepository().checkLogin(username, password);
 
-			if (valid && isLoggedIn(username)) {
+		if (valid && isLoggedIn(username)) {
 
-				return "library?faces-redirect=true";
-			}
-			// TODO message failed login //
+			return "library?faces-redirect=true";
 
-		} catch (Exception ex) {
-			ex.printStackTrace();
-			addErrorMessage(ex);
+		} else {
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_WARN, "Wrong username or password", ""));
 
 		}
 
-		return "index?faces-redirect=true";
-
+		return "";
 	}
 
 	/**
